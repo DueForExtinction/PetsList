@@ -2,15 +2,27 @@
  * 
  */
 package model;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author Brandon Thompson - Brandon Thompson
  *CIS175 - Spring 2023
  * Jan 22, 2023
  */
+@Entity
+@Table(name="Pets")
 public class PetItem {
+	@Id
+	@GeneratedValue
+	@Column(name="ID")
 	private int id;
+	@Column(name="PETNAME")
 	private String name;
+	@Column(name="OWNER")
 	private String owner;
 	
 	public PetItem() {
@@ -67,5 +79,5 @@ public class PetItem {
 	public String returnPetDetails() {
 		return "Pet name: " + this.name + "\nOwner: " + this.owner;
 	}
-	
+	//
 }
