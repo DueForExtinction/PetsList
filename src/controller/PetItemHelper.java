@@ -19,9 +19,9 @@ import model.PetItem;
  * Jan 22, 2023
  */
 public class PetItemHelper {
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("PetsList");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("PetsList"); // Entity manager for the PetItem class
 	
-	public void insertItem(PetItem pi) {
+	public void insertItem(PetItem pi) { // Allows new pet objects to be created.
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(pi);
@@ -29,13 +29,13 @@ public class PetItemHelper {
 		em.close();
 	}
 	
-	public List<PetItem> showAllPets(){
+	public List<PetItem> showAllPets(){ // Shows all of the held pets in the database
 		EntityManager em = emfactory.createEntityManager();
 		List<PetItem> allItems = em.createQuery("SELECT i FROM PetItem i").getResultList();
 		return allItems;
 	}
 	
-	public void deletePet(PetItem toDelete) {
+	public void deletePet(PetItem toDelete) { // Allows pets to be deleted
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		TypedQuery<PetItem> typedQuery = em.createQuery("SELECT pi FROM PetItem pi WHERE pi.name = :selectedPet and pi.owner = :selectedOwner", PetItem.class);
@@ -51,7 +51,7 @@ public class PetItemHelper {
 		em.close();
 	}
 	
-	public PetItem searchForPetById(int idToEdit) {
+	public PetItem searchForPetById(int idToEdit) { // Allows user to search pets by id.
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		PetItem found = em.find(PetItem.class, idToEdit);
@@ -61,7 +61,7 @@ public class PetItemHelper {
 		
 	}
 	
-	public List<PetItem> searchForPetByName(String petName) {
+	public List<PetItem> searchForPetByName(String petName) { // Allows pets to be found by their name
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		TypedQuery<PetItem> typedQuery = em.createQuery("SELECT pi FROM PetItem pi WHERE pi.name = :selectedPet", PetItem.class);
@@ -72,7 +72,7 @@ public class PetItemHelper {
 		return foundItems;
 	}
 	
-	public List<PetItem> searchForPetByOwner(String ownerName) {
+	public List<PetItem> searchForPetByOwner(String ownerName) { // Allows pets to be found by their owners name.
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		TypedQuery<PetItem> typedQuery = em.createQuery("SELECT pi FROM PetItem pi WHERE pi.owner = :selectedOwner", PetItem.class);
@@ -84,7 +84,7 @@ public class PetItemHelper {
 	}
 	
 	
-	public void updatePet(PetItem toEdit) {
+	public void updatePet(PetItem toEdit) { // Allows user to update a pet
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.merge(toEdit);

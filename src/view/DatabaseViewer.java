@@ -24,7 +24,7 @@ public class DatabaseViewer {
 		menu();
 	}
 
-	public static void menu() {
+	public static void menu() { // Displays information for the user.
 		boolean loop = true;
 		System.out.println("Welcome what would you like to do?");
 		while (loop) {
@@ -64,7 +64,7 @@ public class DatabaseViewer {
 
 	}
 	
-	private static void addPet() {
+	private static void addPet() { // Makes a call to the PetItemHelper class to add a bet to the database
 		System.out.print("Enter a pet: ");
 		String pet = userInput.nextLine();
 		System.out.print("Enter an owner: ");
@@ -74,7 +74,7 @@ public class DatabaseViewer {
 
 	}
 	
-	private static void deletePet() {
+	private static void deletePet() { // Makes a call to the PetItemHelper class to delete a pet that the user chooses.
 		System.out.print("Enter the pet to delete: ");
 		String pet = userInput.nextLine();
 		System.out.print("Enter the owner to delete: ");
@@ -86,7 +86,7 @@ public class DatabaseViewer {
 	
 	
 	
-	private static void viewTheList() {
+	private static void viewTheList() { // Displays all the pets in the database
 		List<PetItem> allPets = pih.showAllPets();
 		for(PetItem singlePet : allPets) {
 			System.out.println(singlePet.returnPetDetails());
@@ -94,14 +94,14 @@ public class DatabaseViewer {
 
 	}
 	
-	private static void editPet() {
+	private static void editPet() { // Makes a call to the PetItemHelper class to allow the user to edit a pet in the database
 		System.out.println("How would you like to search? ");
 		System.out.println("1 : Search by pet name");
 		System.out.println("2 : Search by owner");
 		int searchBy = userInput.nextInt();
 		userInput.nextLine();
 		List<PetItem> foundItems;
-		if (searchBy == 1) {
+		if (searchBy == 1) { // Searches for the name of a pet
 			System.out.print("Enter the pet name name: ");
 			String petName = userInput.nextLine();
 			foundItems = pih.searchForPetByName(petName);
@@ -109,7 +109,7 @@ public class DatabaseViewer {
 		}
 		
 		else {
-			System.out.print("Enter the owner: ");
+			System.out.print("Enter the owner: "); // Searches for the name of the owner
 			String ownerName = userInput.nextLine();
 			foundItems = pih.searchForPetByOwner(ownerName);
 
