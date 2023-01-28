@@ -14,7 +14,7 @@ import javax.persistence.Table;
  * Jan 22, 2023
  */
 @Entity
-@Table(name="Pets")
+@Table(name="Pets") // Class used by the database
 public class PetItem {
 	@Id
 	@GeneratedValue
@@ -37,7 +37,7 @@ public class PetItem {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public int getId() { // Getters and setters
 		return id;
 	}
 
@@ -76,7 +76,7 @@ public class PetItem {
 		this.owner = owner;
 	}
 	
-	public String returnPetDetails() {
+	public String returnPetDetails() { // Returns the details of the pet items to the user.
 		return "Pet name: " + this.name + "\nOwner: " + this.owner;
 	}
 	//
